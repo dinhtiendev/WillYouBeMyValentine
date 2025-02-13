@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Will you be my Valentine?</title>
+    <script>
+      let count = 1;
+      function shrinkNoButton() {
+        count++;
+        if (count == 10) {
+            let noButton = document.getElementById("no-btn");
+            noButton.hidden = "none";
+        }
+        let yesButton = document.getElementById("yes-btn");
+        let noButton = document.getElementById("no-btn");
+
+        let yesSize = parseInt(yesButton.style.fontSize) || 16;
+        let noSize = parseInt(noButton.style.fontSize) || 16;
+
+        yesButton.style.fontSize = yesSize + 100 + "px"; // Tăng vừa phải
+        noButton.style.fontSize = Math.max(noSize - 2, 8) + "px"; // Giới hạn nhỏ nhất là 8px
+      }
+
+      function yesButton() {
+        let question = document.getElementById("question");
+        let answer = document.getElementById("answer");
+
+        question.style.display = "none"; // Ẩn câu hỏi
+        answer.style.display = "block"; // Hiện câu trả lời
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root">
+      <div
+        id="question"
+        class="-mt-16 flex h-screen flex-col items-center justify-center"
+      >
+        <img
+          class="h-[200px]"
+          src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif"
+        />
+        <h1 class="my-4 text-4xl">Will you be my Valentine?</h1>
+        <div class="flex items-center">
+          <button
+            id="yes-btn"
+            class="mr-4 rounded bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-700"
+            style="font-size: 16px"
+            onclick="yesButton()"
+          >
+            Yes
+          </button>
+          <button
+            id="no-btn"
+            class="rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-700"
+            style="font-size: 16px"
+            onclick="shrinkNoButton()"
+          >
+            No
+          </button>
+        </div>
+      </div>
+      <div id="answer" style="display: none">
+        <div
+          style="
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <img
+            src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif"
+            alt="Bear fails!!!!"
+          />
+          <div class="my-4 text-4xl font-bold">
+            Yay! 💖🥰 I love you babe three!!!
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
